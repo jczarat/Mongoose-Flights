@@ -1,33 +1,26 @@
+<%- include('../partials/header')%>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flights</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-<body>
   <table>
     <thead>
-        <tr>
-          <th>Airline&nbsp;</th>
-          <th>Airport&nbsp;</th>
-          <th>Flight No.&nbsp;</th>
-          <th>Depature Time&nbsp;</th>
+        <tr id="trhead">
+          	<th>Airline&nbsp;</th>
+			<th>Airport&nbsp;</th>
+			<th>Flight No.&nbsp;</th>
+			<th>Depature Time&nbsp;</th>
         </tr>
-      </thead>
-      <tbody>
+    </thead>
+    <tbody>
         <% flights.forEach(function(flight) { %>
-            <tr>
+            <tr class="trbody">
                 <td><%= flight.airline %></td>
                 <td><%= flight.airport %></td>
                 <td><%= flight.flightNo %></td>
                 <td><%= flight.departs %></td>
             </tr>  
         <% }); %>
-      </tbody><br>
-    </table>
-    <a href="/flights/new"><button>Add A Flight</button></a>
-</body>
-</html>
+    </tbody><br>
+</table>
+<div>
+	<a href="/flights/new"><button>Add A Flight</button></a>
+</div>
+

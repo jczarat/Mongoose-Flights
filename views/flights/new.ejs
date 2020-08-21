@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Flight</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-<body>
+<%- include('../partials/header')%>
+
     <form action="/flights" method="POST">
         <label>Airline</label>
         <select name="airline">
@@ -26,9 +19,9 @@
         <label>Flight No.</label>
         <input type="text" name="flightNo"><br>
         <label>Departure Date</label>
-        <input type="datetime-local" name="departs"><br>
+        <input type="datetime-local" name="departs" value="<%= destDate %>"><br>
         <input type="submit" value="Add Flight">
     </form>
     <a href="/flights">Return To Manifest</a>
-</body>
-</html>
+
+
