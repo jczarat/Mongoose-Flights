@@ -1,0 +1,20 @@
+<%- include('../partials/header')%>
+
+<h2>Airline: <%= flight.airline %></h2>
+<h2>Airport: <%= flight.airport%></h2>
+<h2>Flight No: <%= flight.flightNo %></h2>
+<h3>Depature Time: <%= flight.departs %></h3>
+
+
+
+ <!-- Need to create destiations before we can add them to the view
+<h3>Destination: <%= flight.destinations.airport %></h3> -->
+
+<h3>Add Destination:</h3>
+
+
+<form action="/flights/<%= flight._id %>/reviews" method="POST">
+
+</form>
+
+

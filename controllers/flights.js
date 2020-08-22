@@ -3,7 +3,8 @@ const Flight = require('../models/flight.js')
 module.exports = {
     index,
     new: newFlight,
-    create
+    create,
+    show
 }
 
 function index(req, res){
@@ -23,7 +24,7 @@ function newFlight(req, res){
 function create(req, res){
   const flight = new Flight(req.body);
   console.log(flight)
-  flight.save(function(err) {
+  flight.save(function(err){
     // one way to handle errors
     if (err) {
         let testFlight = new Flight();
@@ -35,4 +36,10 @@ function create(req, res){
     // for now, redirect right back to new.ejs
     res.redirect('/flights');
   });
+}
+
+function show(req, res){
+    Flight.findById(req.params.id, function(err, flight) {
+        res.render('flights/show', {title: 'Flight Details', flight})
+    });
 }
