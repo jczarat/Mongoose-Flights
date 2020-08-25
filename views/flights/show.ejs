@@ -1,8 +1,8 @@
 <%- include('../partials/header')%>
 
-<h2>Airline: <%= flight.airline %></h2>
-<h2>Departs From: <%= flight.airport%></h2>
-<h2>Flight No: <%= flight.flightNo %></h2>
+<h3>Airline: <%= flight.airline %></h3>
+<h3>Departs From: <%= flight.airport%></h3>
+<h3>Flight No: <%= flight.flightNo %></h3>
 <h3>Depature Time: <%= flight.departs %></h3>
 
 
@@ -31,9 +31,6 @@
 </table>
 
 
-<!-- Need to add this once we have tickets -->
-
-<!-- Need to add this once we have tickets -->
 
 
 <h3>Add Destination:</h3>
@@ -53,5 +50,26 @@
 
 <a href="/flights">Return To Manifest</a>
 
+<h3>Tickets: </h3>
+<table>
+    <thead>
+        <tr>
+            <th>Seat&nbsp;</th>
+            <th>Price&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% tickets.forEach(function(ticket){ %>
+            <tr>
+                <td><%= ticket.seat %> </td>
+                <td><%= ticket.price %> </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
 
 
+
+<form action="/flights/<%= flight._id %>/tickets/new" method="GET">
+    <input type="submit" value="Add A Ticket">
+</form>
