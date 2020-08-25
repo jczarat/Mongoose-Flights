@@ -1,10 +1,11 @@
-const Flight = require('../models/flight.js')
+const Flight = require('../models/flight')
 
 module.exports = {
     index,
     new: newFlight,
     create,
-    show
+    show,
+    delete: deleteFlight
 }
 
 function index(req, res){
@@ -42,4 +43,11 @@ function show(req, res){
     Flight.findById(req.params.id, function(err, flight) {
         res.render('flights/show', {title: 'Flight Details', flight})
     });
+}
+
+function deleteFlight(req, res){
+    Flight.findByIdAndDelete(req.params.id, function (err) {
+        if(err) console.log(err);
+        res.redirect('/flights');
+      });
 }

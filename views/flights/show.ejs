@@ -1,20 +1,52 @@
 <%- include('../partials/header')%>
 
 <h2>Airline: <%= flight.airline %></h2>
-<h2>Airport: <%= flight.airport%></h2>
+<h2>Departs From: <%= flight.airport%></h2>
 <h2>Flight No: <%= flight.flightNo %></h2>
 <h3>Depature Time: <%= flight.departs %></h3>
 
 
+<h3>Destinations: </h3>
+<table>
+    <thead>
+        <tr>
+            <th>Airport&nbsp;</th>
+            <th>Arrival Time&nbsp;</th>
+            <th>Delete&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% flight.destinations.forEach(function(dest){ %>
+            <tr>
+                <td><%= dest.airport %> </td>
+                <td><%= dest.arrival %> </td>
+                <td>
+                    <form action="/destinations/<%= dest._id %>/<%= flight._id %>?_method=DELETE" method="POST">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
 
- <!-- Need to create destiations before we can add them to the view
-<h3>Destination: <%= flight.destinations.airport %></h3> -->
 
 <h3>Add Destination:</h3>
-
-
-<form action="/flights/<%= flight._id %>/reviews" method="POST">
-
+<form action="/flights/<%= flight._id %>/destinations" method="POST">
+    <label>Airport</label>
+    <select name="airport">
+        <option value="AUS" selected>AUS</option>
+        <option value="DFW">DFW</option>
+        <option value="DEN">DEN</option>
+        <option value="LAX">LAX</option>
+        <option value="SAN">SAN</option>
+    </select><br>
+    <label>Arrival Time</label>
+    <input type="datetime-local" name="arrival"><br>
+    <input type="submit" value="Add Details">
 </form>
+
+<a href="/flights">Return To Manifest</a>
+
 
 
