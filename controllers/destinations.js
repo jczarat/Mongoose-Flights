@@ -14,7 +14,6 @@ function create (req, res) {
     })
 }
 
-
 //so far this is finding the correct flight based on the destination, still need to delete the destiation
 function deleteDest(req, res) {
     Flight.findById(req.params.flight, function(err, flight){

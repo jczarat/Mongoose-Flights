@@ -1,27 +1,34 @@
 <%- include('../partials/header')%>
 
-    <form action="/flights" method="POST">
+<form action="/flights" method="POST">
+    <div class="form-group">
         <label>Airline</label>
-        <select name="airline">
+        <select name="airline" class="form-control">
             <option value="American" selected>American</option>
             <option value="Delta">Delta</option>
             <option value="Southwest">Southwest</option>
             <option value="United">United</option>
         </select><br>
+    </div>
+    <div class="form-group">
         <label>Airport</label>
-        <select name="airport">
+        <select name="airport" class="form-control">
             <option value="ATL" selected>ATL</option>
             <option value="DFW">DFW</option>
             <option value="DEN">DEN</option>
             <option value="LAX">LAX</option>
             <option value="SAN">SAN</option>
         </select><br>
+    </div>
+    <div class="form-group">
         <label>Flight No.</label>
-        <input type="text" name="flightNo"><br>
+        <input type="text" name="flightNo" class="form-control"><br>
+    </div>
+    <div class="form-group">
         <label>Departure Date</label>
-        <input type="datetime-local" name="departs" value="<%= destDate %>"><br>
-        <input type="submit" value="Add Flight">
-    </form>
-    <a href="/flights">Return To Manifest</a>
+        <input type="datetime-local" name="departs" value="<%= destDate %>" class="form-control"><br>
+    </div>
+    <input type="submit" value="Add Flight" class="btn btn-outline-primary">
+</form>
 
 

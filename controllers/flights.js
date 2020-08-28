@@ -25,13 +25,11 @@ function newFlight(req, res){
 
 function create(req, res){
   const flight = new Flight(req.body);
-  console.log(flight)
   flight.save(function(err){
     // one way to handle errors
     if (err) {
         let testFlight = new Flight();
         let dt = testFlight.departs
-        console.log(dt)
         let destDate = dt.toISOString().slice(0, 16);
         return res.render('flights/new', {title: 'Add Flight', destDate});
     }

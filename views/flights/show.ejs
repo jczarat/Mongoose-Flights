@@ -1,13 +1,15 @@
 <%- include('../partials/header')%>
+<body class="container-fluid">
 
-<h3>Airline: <%= flight.airline %></h3>
-<h3>Departs From: <%= flight.airport%></h3>
-<h3>Flight No: <%= flight.flightNo %></h3>
-<h3>Depature Time: <%= flight.departs %></h3>
+<div class="flight">
+    <h4>Airline: <div class="info"><%= flight.airline %></div></h4>
+    <h4>Departs From: <div class="info"><%= flight.airport%></div></h4>
+    <h4>Flight No: <div class="info"><%= flight.flightNo %></div></h4>
+    <h4>Depature Time: <div class="info"><%= flight.departs %></div></h4>
+</div>
 
-
-<h3>Destinations: </h3>
-<table>
+<h3 class="sectiontitle">Destinations:</h3>
+<table class="table">
     <thead>
         <tr>
             <th>Airport&nbsp;</th>
@@ -22,7 +24,7 @@
                 <td><%= dest.arrival %> </td>
                 <td>
                     <form action="/destinations/<%= dest._id %>/<%= flight._id %>?_method=DELETE" method="POST">
-                        <input type="submit" value="Delete">
+                        <input type="submit" value="Delete" class="btn btn-outline-danger">
                     </form>
                 </td>
             </tr>
@@ -30,28 +32,27 @@
     </tbody>
 </table>
 
-
-
-
-<h3>Add Destination:</h3>
+<h4 class="sectiontitle">Add Destination:</h4>
 <form action="/flights/<%= flight._id %>/destinations" method="POST">
+    <div class="form-group">
     <label>Airport</label>
-    <select name="airport">
-        <option value="AUS" selected>AUS</option>
-        <option value="DFW">DFW</option>
-        <option value="DEN">DEN</option>
-        <option value="LAX">LAX</option>
-        <option value="SAN">SAN</option>
-    </select><br>
-    <label>Arrival Time</label>
-    <input type="datetime-local" name="arrival"><br>
-    <input type="submit" value="Add Details">
+        <select name="airport" class="form-control">
+            <option value="AUS" selected>AUS</option>
+            <option value="DFW">DFW</option>
+            <option value="DEN">DEN</option>
+            <option value="LAX">LAX</option>
+            <option value="SAN">SAN</option>
+        </select><br>
+    </div>
+    <div class="form-group">
+        <label>Arrival Time</label>
+        <input type="datetime-local" name="arrival" class="form-control"><br>
+    </div>
+    <input type="submit" value="Add Destination" class="btn btn-outline-primary">
 </form>
 
-<a href="/flights">Return To Manifest</a>
-
-<h3>Tickets: </h3>
-<table>
+<h3 class="sectiontitle">Tickets: </h3>
+<table class="table">
     <thead>
         <tr>
             <th>Seat&nbsp;</th>
@@ -62,14 +63,14 @@
         <% tickets.forEach(function(ticket){ %>
             <tr>
                 <td><%= ticket.seat %> </td>
-                <td><%= ticket.price %> </td>
+                <td>$<%= ticket.price %> </td>
             </tr>
         <% }) %>
     </tbody>
 </table>
 
-
-
 <form action="/flights/<%= flight._id %>/tickets/new" method="GET">
-    <input type="submit" value="Add A Ticket">
+    <input type="submit" value="Add Ticket" class="btn btn-outline-primary"">
 </form>
+
+</body>
